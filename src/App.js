@@ -1,9 +1,10 @@
 import './App.css';
 import {useState} from "react";
 import PureModal from 'react-pure-modal';
-// eslint-disable-next-line
 import 'react-pure-modal/dist/react-pure-modal.min.css';
 import parse from 'html-react-parser';
+
+const substitutionCost = 2;
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -59,13 +60,13 @@ function App() {
             : Math.min(
               arr[i - 1][j] + 1,
               arr[i][j - 1] + 1,
-              arr[i - 1][j - 1] + (s[j - 1] === t[i - 1] ? 0 : 2)
+              arr[i - 1][j - 1] + (s[j - 1] === t[i - 1] ? 0 : substitutionCost)
             );
         if (i === 0) {
           medTable[i][j] = "→";
         } else {
           medTable[i][0] = "↓";
-          const sub = (arr[i - 1][j - 1] + (s[j - 1] === t[i - 1] ? 0 : 2));
+          const sub = (arr[i - 1][j - 1] + (s[j - 1] === t[i - 1] ? 0 : substitutionCost));
           const ins = arr[i - 1][j] + 1;
           const del = arr[i][j - 1] + 1;
           if (sub === del && del === ins) {
