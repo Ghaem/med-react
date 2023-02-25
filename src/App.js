@@ -154,18 +154,20 @@ function App() {
           <span>Source: {source} - Target: {target}</span>
         </div>
         <div id="med-table">
-          <table>
-            <thead>
-            <td>Source → <br/> Target ↓</td>
-            <td>#</td>
-            {
-              [...source].map(c => <td>{c}</td>)
-            }
-            </thead>
-            {
-              parse(createTable(tableData))
-            }
-          </table>
+          <div style={{width: "100%", overflowX: "auto"}}>
+            <table style={{width: "100%", tableLayout: "fixed"}}>
+              <thead>
+              <td>Source → <br/> Target ↓</td>
+              <td>#</td>
+              {
+                [...source].map(c => <td>{c}</td>)
+              }
+              </thead>
+              {
+                parse(createTable(tableData))
+              }
+            </table>
+          </div>
         </div>
       </PureModal>
     </div>
